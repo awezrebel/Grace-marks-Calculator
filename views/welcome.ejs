@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet"  type="text/css" href="http://localhost:5000/css/style.css" />
+</head>
+<style>
+       a{
+        color: black;
+    font-size: larger;
+    text-align: center;
+    margin-top: 5%;
+    text-decoration: none;
+    }
+</style>
+ 
+    <form method="GET", action="http://localhost:8000/">     
+    
+    
+     
+    
+        
+      
+     
+     
+   
+    
+
+           
+                
+                
+             
+<body>  
+  
+    <div class="main-container">
+      
+      
+    
+        <div class="slider-container">
+            
+            <div class="left-slide">
+
+                
+                <div class="sign-in">
+                    <h1>
+                        <%= "Welcome "  +   welcome.Name %>   
+                    </h1>          
+        <img src ="  <%=welcome.image %>   "  width="100px">
+         
+                    <div class="sign-in-box">
+    
+    
+    
+    
+                        <div class="head">
+                           
+                            <h2>Sign in</h2>
+                        </div>
+                        <div class="username-field">
+                            <i></i>
+                            <input type="text"  placeholder="Username" />
+                        </div>
+                        <div class="password-field">
+                            <i></i>
+                            <input type="text" placeholder="Password" />
+                        </div>
+                        <button type="submit">submit</button>
+                        <br><br>
+                          <button  style="background-color:inherit;"  formaction="forgot">Forgot password ?</button>
+                         
+                    </div>
+                    </div>
+                
+           
+            </div>
+
+
+ 
+        </div>
+        
+    </div>
+    <script src="http://localhost:5000/home.js"></script>
+</body>
+
+</html>

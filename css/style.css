@@ -1,0 +1,144 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    
+    height: 100vh;
+    overflow:hidden;
+    
+}
+
+a{
+    color: black;
+    font-size: larger;
+    text-align: center;
+    text-decoration: none;
+}
+
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+.slider-container{
+   
+    overflow:hidden;
+    position:relative;
+    width:100vw;
+    height: 100vh;
+
+}
+
+.left-slide{
+    height: 100%;
+    width: 50%;
+    position:absolute;
+    left: 25%;
+    transition: all 0.5s ease-in-out;
+}
+
+.left-slide>div{
+    height: 100%;
+    width: 100%;
+   left: 255;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+.sign-in-box{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 65%;
+    background:rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    backdrop-filter: blur(0.3px);
+    -webkit-backdrop-filter: blur(0.3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10%;
+
+}
+.sign-in-box h1{
+    margin-left: 35%;
+    margin-bottom: 10px;
+}
+
+.sign-in-box h2{
+margin-left: 140px;
+margin-bottom: 50px;
+}
+
+.sign-in-box button{
+width: 100%;
+padding: 10px;
+border: none;
+outline: none;
+background:rgb(206, 72, 247);
+color: black;
+font-size: 17px;
+transition: 0.2s;
+border-radius: 5px;
+cursor: pointer;
+}
+
+
+.forgotpassword button{
+    margin-top: 25px;
+    text-decoration: none;
+    color: black;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.sign-in-box input{
+    display: block;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    color: black;
+    margin-bottom: 50px;
+
+    
+}
+.signin-into h2{
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+.signin-into p{
+    margin-bottom: 10px;
+
+    font-size: 20px;
+}
+.signin-into button{
+    width: 30%;
+    margin-right: 20px;
+    margin-top: 5px;
+  outline: none;
+  color: black;
+  font-size: 17px;
+  transition: 0.2s;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+border: none;
+background:rgba(255, 255, 255, 0.25);
+box-shadow: 0 8px 32px 0 rgba(31,38,135,0.3);
+backdrop-filter: blur(0.3px);
+-webkit-backdrop-filter: blur(0.3px);
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+}
+  
+ 

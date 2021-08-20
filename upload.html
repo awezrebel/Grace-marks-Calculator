@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+
+    body{
+        
+        text-align: center;
+        background-image: url('https://static.wixstatic.com/media/11062b_e1b6e99f6b3946e48fd07ea6d737c122~mv2.jpg/v1/fit/w_1980,h_1080/11062b_e1b6e99f6b3946e48fd07ea6d737c122~mv2.jpg') ;
+        background-repeat: no-repeat;
+        background-size: 1550px 730px;
+    }
+</style>
+<body>
+    <h1>
+        Upload your File here
+    </h1>
+    <form method="POST" action="http://localhost:8000" enctype="multipart/form-data">
+
+    <input type="file" name="file"   /> <br>
+    <input type="submit" value="Upload" /></form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>OTP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<body>
+  <style>
+
+     body {
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+       text-align: center;
+        height: 100vh;
+        }
+.button {
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+ 
+  </style>
+ 
+  <div class="w3-container w3-peach">
+ 
+  <h2>Password Recovery</h2>
+ 
+
+  </div>
+   <form method="GET" , action="https://profilebuilder-se.herokuapp.com/">     
+
+ 
+
+
+ 
+    OTP:<input type="text" name="otp" ><br></br>  
+     User name:<input type="text" name="uname1" ><br></br>  
+    Password:<input type="password" name="pwd" id="pwd"> 
+     <em class="far fa-eye"  onclick="password()"></em><br></br>   
+    Confirm password:<input type="password" name="cpwd"  id="cpwd">   
+   <em class="far fa-eye"  onclick="confirmpassword()"></em><br></br>  
+<script>
+  function  password() {
+    var x = document.getElementById("pwd");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function   confirmpassword() {
+    var x = document.getElementById("cpwd");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+   
+        <div id="countdown"></div>
+        <button class="w3-button w3-orange"  id="mybutton" formaction="/otp"  >Resend OTP</button>  <br><br> 
+            <p>
+  
+        <a href="login.html" , class="w3-btn w3-orange">Cancel</a>  &nbsp; &nbsp;
+        <button  type="submit" , class="w3-btn w3-orange" >confirm</button> <br><br> 
+       <p></p>
+
+   
+ 
+<script>
+const htmlBtn=document.getElementById("mybutton");
+htmlBtn.disabled=true;
+</script>
+
+
+<script>
+alert("otp sent succesfully")
+var timeleft = 20;
+var downloadTimer = setInterval(function(){
+if(timeleft <= 0){
+clearInterval(downloadTimer);
+document.getElementById("countdown").innerHTML = " ",htmlBtn.disabled=false;
+} else {
+document.getElementById("countdown").innerHTML = timeleft ;
+}
+timeleft -= 1;
+}, 1000);
+
+</script>
+
+</form>
+ 
+
+</body>
+</html> 
