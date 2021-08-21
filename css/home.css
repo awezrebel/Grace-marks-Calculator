@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
 @import url("https://fonts.googleapis.com/css?family=Lobster");
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 :root {
   --blue: circle(50px at 100% 0%);
 }
@@ -56,7 +59,7 @@ body {
   display: flex;
   height: 70vh;
   overflow: hidden;
-  /* border: 2px solid red; */
+  /* border: 2px solidddd red; */
   width: 100%;
 }
 
@@ -89,7 +92,10 @@ body {
   font-size: 2.5rem;
   color: white;
   margin-bottom: 1.5rem;
+  font-weight: bold;
+  
 }
+
 .mini-cont h3 {
   color: rgba(218, 33, 33, 0.788);
 }
@@ -112,12 +118,12 @@ section {
   width: 10rem;
   height: 12rem;
   margin: 2rem;
-  background: rgba( 255, 255, 255, 0.30 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 2.5px );
--webkit-backdrop-filter: blur( 2.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .box button {
@@ -197,8 +203,8 @@ button:hover:after {
   cursor: pointer;
   transition: all 0.6s ease-in-out;
 }
-.head:hover{
-    color: orange;
+.head:hover {
+  color: orange;
 }
 .contact {
   display: relative;
@@ -212,4 +218,64 @@ button:hover:after {
 .contacts {
   font-size: 1.5rem;
   color: blue;
+}
+
+.quotes{
+/* border: 2px solid red; */
+width: 70%;
+height: 40%;
+text-align: center;
+font-size:1.9rem;
+display: grid;
+place-items: center;
+position: relative;
+font-family: 'Satisfy', cursive;
+margin-top: 2rem;
+
+  
+}
+.quote{
+padding-top: 3rem;
+}
+.author{
+color: orange;
+padding-bottom: 2rem;
+padding-left: 10rem;
+font-size:1.1rem;
+font-style: italic;
+
+}
+
+.quotes:before{
+color:#ccc;
+content:"";
+font-size:2em;
+line-height:.1em;
+position: absolute;
+border: 2px solid white;
+border-top: transparent;
+border-right: transparent;
+rotate: 90deg;
+height: 10px;
+width: 10px;
+top:1.4rem;
+left:-0.5rem;
+  
+}
+.quotes:after{
+color:#ccc;
+content:"";
+font-size:2em;
+line-height:.1em;
+position: absolute;
+border: 2px solid white;
+border-top: transparent;
+height: 10px;
+width: 10px;
+border-left: transparent;
+  
+bottom:1.4rem;
+right:-0.5rem;
+  
+
 }

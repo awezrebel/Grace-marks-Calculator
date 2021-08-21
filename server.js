@@ -4,9 +4,11 @@ const path = require('path');
 const app = express();
 var http = require('http');
 var url = require('url');
-
-
+var mysql = require('mysql');
+const fs = require('fs'); 
+var ejs = require('ejs');
 //app.use(upload());
+
 
 app.get('/', (req,res) =>{
 var query = require('url').parse(req.url,true).query;
@@ -14,23 +16,39 @@ var uname = query.uname;
 res.sendFile(__dirname  + '/home.html');
 
 
-app.post('upload/', (req,res)=>{
 
-if(req.files){
+//truncating temporary values
+//truncating temporary files
+var c=0;
+if(c==0){
+
+fs.truncate('block.txt', 0, function() {
+console.log("File Content Deleted");
+});
     
-var file = req.files.file;
-var filename = file.name;
-console.log(filename);
+fs.truncate('out.txt', 0, function() {
+console.log("File Content Deleted");
+});
+    
+c+=1;
+}
+     
 
-file.mv('./Upload/' + filename , function(err){
-if(err){
-res.send(err)
-}else{
-res.send("File Uploaded");
-}
-})
-}
-})
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
 
 var obj = {};
  
@@ -40,7 +58,7 @@ app.get('/Admin', function(req, res){
  
 result = {"Name": "Admin", "image":   "http://localhost:5000/img/Admin.png" };
 obj = {welcome: result};
-res.render('welcome', obj);   
+ res.render('welcome', obj);   
 });
 
 
@@ -56,6 +74,7 @@ result ='Student';
 result = {"Name": "Student", "image":   "http://localhost:5000/img/student.png" };
 obj = {welcome: result};
 res.render('welcome', obj);   
+return ;
 });
   
 app.get('/Coordinator', function(req, res){
@@ -66,6 +85,7 @@ res.render('welcome', obj);
 
 app.get('/forgot', function(req, res){
 res.sendfile("./forgot.html");
+
  
 });
 
@@ -84,9 +104,200 @@ var process = spawn('python',["./otp.py",] );
 console.log("Generating Otp " + process);
 });
 
-
-
 })
+
+
+
+
+
+
+
+
+
+
+//login
+app.get('/homelogin', function(req, res){
+
+//mysql connection
+
+var mycon = mysql.createConnection({
+connectionLimit: 10,
+acquireTimeout: 30000, //30 secs
+host: "localhost",
+user: "root",
+password: "Awez@0987", // sensitive
+multipleStatements: true ,
+port: "3306",
+database: "database1"
+});
+        
+
+
+var query = require('url').parse(req.url,true).query;
+
+var username = query.username;
+var password=query.password;
+ 
+ 
+if(username != undefined && password != undefined) {
+fs.truncate('currentlogin.txt', 0, function() {
+console.log("File Content Deleted");
+});
+    
+fs.readFile('block.txt', 'utf-8', (err, data) => { 
+if (err) throw err;
+    
+if(username==data){
+res.send("Your account is blocked ..pls login after 24hrs");
+}else{
+    
+var test = 0;             
+var pd=password;
+mycon.query('SELECT * from login', function (error,login, fields) {
+if (error) throw error;
+    
+var length = login.length;
+var m=null;
+for(var i = 0; i < length; i++){
+if (login[i].uname==username){
+m=i;
+}
+}
+if(m==null){
+res.sendfile("oops.html");
+}else{ 
+            
+if(login[m].pwd==password){
+test=1
+    
+fs.appendFile('currentlogin.txt', username , (err) => { 
+if (err) throw err;
+const sql5=`INSERT INTO database1.currentlogin (user) VALUES ('${username}')`;
+mycon.query(sql5, function (err1, result) {
+if (err1) throw err1;
+console.log(result);
+});
+}) 
+}}
+    
+console.log(username);
+console.log(password);
+console.log(test);
+if(test==1){ 
+ 
+res.redirect("/loginwelcome");
+ 
+ 
+ 
+fs.readFile('currentlogin.txt', 'utf-8', (err, data1) => { 
+if (err) throw err;
+var currentTime = new Date();
+var da=currentTime.getDate() + ":" + currentTime.getMonth() + ":" + currentTime.getFullYear() ;
+var currentOffset = currentTime.getTimezoneOffset();
+var ISTOffset = 330;   // IST offset UTC +5:30 
+var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+var time = ISTTime.getHours() + ":" + ISTTime.getMinutes() + ":" + ISTTime.getSeconds();
+console.log(" Date   " + currentTime + " Time : " + time);
+const sql5=`INSERT INTO database1.loginhistory (user, date, time ) VALUES ('${username}' , '${currentTime}' , '${time}')`;
+mycon.query(sql5, function (err2, result) {
+if (err2) throw err2;
+console.log(result);
+});
+             
+})
+            
+    
+    
+}
+if(test==0 && m!=null){
+wrongpass();
+}
+});
+     
+}})
+}
+ 
+    
+    
+    
+function wrongpass(){
+count=0;
+let data = username+",";
+fs.appendFile('out.txt', data, (err) => { 
+if (err) throw err; 
+}) 
+var count=0;
+try {  
+var data1 = fs.readFileSync('out.txt', 'utf8');
+console.log(data.toString());    
+} catch(e) {
+console.log('Error:', e.stack);
+}
+console.log("data" ,data1);
+let inp=data1.split(",");
+    
+for(var w=0;w<=inp.length-1;w++){
+if(inp[w]==username){
+count++;
+}
+}
+if(count==0){
+res.send("Please provide valid details \n left 2 attempts");
+}else if(count==1){
+res.send("Please provide valid details \n left 1 attempt");
+}else if(count>1){
+res.send("Your account is blocked ..pls login after 24hrs");
+fs.appendFile('block.txt', username, (err) => {
+console.log("succesfully blocked"); 
+if (err) throw err; 
+}) 
+console.log("user " + username + "blocked");
+}
+        
+     
+}
+
+
+
+app.get('/loginwelcome', function(req2, res2){
+
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err; 
+mycon.query(`SELECT name FROM login  WHERE (uname ='${data}')`, function(err, result) {
+            
+if(err){
+throw err;
+} else {
+obj = {loginwelcome: result};
+
+res2.render('loginwelcome', obj);           
+}
+});
+});
+
+app.get('/warning', function(req, res){
+res.sendfile("./warning.html");
+});
+
+app.get('/logout', function(req, res){
+res.sendfile("./logout.html");
+});
+});
+
+
+
+
+
+});
+     
+     
+
+
+
+
+
+
+
 
 
 app.listen(8000);

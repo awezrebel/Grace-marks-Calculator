@@ -1,3 +1,7 @@
+const quotesy= document.querySelector(".quote")
+const author= document.querySelector(".author")
+const button=document.querySelector(".button");
+let num=Math.floor(Math.random() * 100);
 const contactUs= document.querySelector(".contact")
 const heady= document.querySelector(".head")
 
@@ -21,7 +25,7 @@ contactUs.addEventListener("click",(event)=>{
     
     }
 else{
-    // r.style.setProperty('--blue', 'circle(1900px at 100% 0%)');
+    // r.style.setProperty('--blue',s 'circle(1900px at 100% 0%)');
     
 
     document.documentElement.style
@@ -37,10 +41,23 @@ else{
             },500)
 
       
-        
-
- 
-    
+  
 }
 })
+
+
+async function jokes(){
+    const jokes = await fetch('https://type.fit/api/quotes');
+    const final= await jokes.json()
+    
+    quotesy.innerText= final[num].text;
+    author.innerText=`~${final[num].author}`;
+    num+=1
+
+    
+    
+
+}
+
+jokes();
 

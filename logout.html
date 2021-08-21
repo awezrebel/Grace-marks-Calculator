@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    height: 95.5vh;
+   
+    justify-content: center;
+    align-items: center;
+     text-align: center;
+}
+img {
+  border-radius: 50%;
+}
+</style>
+<title>Logout</title>
+<form method="GET", action="http://localhost:8000/">      
+</head>
+<body>
+
+    
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack()
+        {
+             
+            window.onbeforeunload = function() { return "Your work will be lost."; };
+        }
+    </script>
+    
+    <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+    
+
+ 
+<h1>Logout successful </h1>
+<img src="https://i.pinimg.com/originals/70/a5/52/70a552e8e955049c8587b2d7606cd6a6.gif" width="100" alt="image not available"></img></br><br> 
+<p1> You have logged out successfully </p1><br> 
+ <br>
+<p1> For security reasons, exit your web browser </p1> <br> </br>
+ 
+
+
+<script type = "text/javascript" >
+function preventBack() { window.history.forward(); }
+setTimeout("preventBack()", 0);
+window.onunload = function () { null };
+</script>
+</body>
+</html>
