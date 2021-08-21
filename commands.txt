@@ -1,0 +1,25 @@
+git init 
+git config user.name "awez"
+git config user.email "shaikawez0190@gmail.com"
+
+git add *
+git commit -m "first commit" 
+git remote add origin https://github.com/awezrebel/Profiler-Builder.git
+
+git branch -M main 
+git push -u origin main  
+
+to modify :
+git add *
+git commit -m "bugs fixed"
+git pull  origin main
+git push -u origin main 
+awezrebel
+Awez@0987
+
+
+ 
+
+heroku logs --tail
+
+heroku restart

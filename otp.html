@@ -1,107 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>OTP</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <title>OTP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+
+    }
+
+    body {
+      background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+
+height: 100vh;
+      
+    }
+
+    header {
+      /* border: 1px solid red; */
+      text-align: center;
+      color: white;
+      
+    }
+
+    header h2{
+      /* font-weight: bold; */
+      font-size: 45px;
+
+    }
+
+    span {
+      color: orange;
+      /* font-weight: bold; */
+
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      /* border: 1px solid red; */
+      justify-content:center;
+      align-items:center;
+      width:50%;
+      height:80vh;
+      margin: auto;
+    }
+
+    .inputs{
+      /* border: 1px solid red; */
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      width:80%;
+      height:80%;
+      justify-content:center;
+      align-items:center;
+      background: rgba( 226, 233, 241, 0.20 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4.0px );
+-webkit-backdrop-filter: blur( 4.0px );
+border-radius: 20px;
+
+    }
+
+    .inputs input{
+      margin:0.4rem;
+      padding:0.3rem;
+      border-radius: 0.3rem;
+      border: none;
+      width:20rem;
+    }
+
+    .far{
+      padding-top: 0.8rem;
+      width:27px;
+      
+    }
+    .password,.confirm-password{
+      display: flex;
+      margin-left: 1.6rem;
+      /* width:70%; */
+
+    }
+
+    #countdown{
+      width:50px;
+      border: 2px solid black;
+      display: grid;
+      place-items: center;
+      margin-top: 3rem;
+      background-color: white;
+      border-radius: 0.3rem;
+      border: none;
+    }
+
+    .w3-btn{
+      padding: 0.4rem;
+      margin:0.4rem;
+      border-radius: 0.3rem;
+      /* margin-top:2rem; */
+
+    }
+
+    #mybutton{
+      margin-top:2rem;
+      padding:0.8rem;
+    }
+
+
+
+
+  </style>
 
 <body>
-  <style>
 
-     body {
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-       text-align: center;
-        height: 100vh;
-        }
-.button {
-font-size:15px;
-  border-radius: 3px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  
-  padding: 7px;
-  width: 70px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
- 
-  </style>
- 
-  <div class="w3-container w3-peach">
- 
-  <h2>Password Recovery</h2>
- 
+  <header>
+    <h2>Password <span>Recovery</span></h2>
+  </header>
+  <form method="GET", action="http://localhost:8000/">        
 
-  </div>
-   <form method="GET" , action="https://profilebuilder-se.herokuapp.com/">     
-
- 
+      <div class="inputs">
 
 
- 
-    OTP:<input type="text" name="otp" ><br></br>  
-     User name:<input type="text" name="uname1" ><br></br>  
-    Password:<input type="password" name="pwd" id="pwd"> 
-     <em class="far fa-eye"  onclick="password()"></em><br></br>   
-    Confirm password:<input type="password" name="cpwd"  id="cpwd">   
-   <em class="far fa-eye"  onclick="confirmpassword()"></em><br></br>  
-<script>
-  function  password() {
-    var x = document.getElementById("pwd");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
 
-  function   confirmpassword() {
-    var x = document.getElementById("cpwd");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-</script>
-   
+        <input type="text" placeholder="Otp" name="otp">
+        <input type="text" placeholder="Username" name="uname1">
+        <div class="password">
+          <input type="password" placeholder="Enter Password"   name="pwd" id="pwd">
+          <em class="far fa-eye" onclick="password()"></em>
+
+        </div>
+        <div class="confirm-password">
+          
+          <input type="password" placeholder="Confirm Password"   name="cpwd" id="cpwd">
+          <em class="far fa-eye" onclick="confirmpassword()"></em>
+        </div>
         <div id="countdown"></div>
-        <button class="w3-button w3-orange"  id="mybutton" formaction="/otp"  >Resend OTP</button>  <br><br> 
-            <p>
-  
-        <a href="login.html" , class="w3-btn w3-orange">Cancel</a>  &nbsp; &nbsp;
-        <button  type="submit" , class="w3-btn w3-orange" >confirm</button> <br><br> 
-       <p></p>
 
-   
- 
-<script>
-const htmlBtn=document.getElementById("mybutton");
-htmlBtn.disabled=true;
-</script>
+      </div>
 
 
-<script>
-alert("otp sent succesfully")
-var timeleft = 20;
-var downloadTimer = setInterval(function(){
-if(timeleft <= 0){
-clearInterval(downloadTimer);
-document.getElementById("countdown").innerHTML = " ",htmlBtn.disabled=false;
-} else {
-document.getElementById("countdown").innerHTML = timeleft ;
-}
-timeleft -= 1;
-}, 1000);
 
-</script>
+    <script>
+      function password() {
+        var x = document.getElementById("pwd");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
 
-</form>
- 
+      function confirmpassword() {
+        var x = document.getElementById("cpwd");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+
+    <button class="w3-btn w3-orange" id="mybutton" formaction="/otp">Resend OTP</button> <br><br>
+    <p>
+
+     
+      <button  formaction="/home" , class="w3-btn w3-orange">Cancel</button>   &nbsp; &nbsp;
+      <button type="submit" , class="w3-btn w3-orange">confirm</button> <br><br>
+    <p></p>
+
+
+
+    <script>
+      const htmlBtn = document.getElementById("mybutton");
+      htmlBtn.disabled = true;
+    </script>
+
+
+    <script>
+      alert("otp sent succesfully")
+      var timeleft = 20;
+      var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+          clearInterval(downloadTimer);
+          document.getElementById("countdown").innerHTML = " ", htmlBtn.disabled = false;
+        } else {
+          document.getElementById("countdown").innerHTML = timeleft;
+        }
+        timeleft -= 1;
+      }, 1000);
+
+    </script>
+
+  </form>
+
 
 </body>
-</html> 
+
+</html>

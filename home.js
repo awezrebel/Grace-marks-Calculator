@@ -1,41 +1,46 @@
-const slidercontainer= document.querySelector(".slider-container")
-const rightslider= document.querySelector(".right-slide")
-const leftslider= document.querySelector(".left-slide")
-const jumptosignin= document.querySelector(".go-to-sign-in")
-const jumptosignup= document.querySelector(".go-to-sign-up")
-let activeSlideIndex=0
+const contactUs= document.querySelector(".contact")
+const heady= document.querySelector(".head")
 
-leftslider.style.top=  `0vh`
-rightslider.style.top=  `-100vh`
-jumptosignin.addEventListener("click",()=>slidedown("down"))
-jumptosignup.addEventListener("click",()=>slideUp("down"))
-const slidedown= (direction)=>{
-    const sliderHeight= slidercontainer.clientHeight
-    if(leftslider.style.top=="-100vh"){
-        leftslider.style.top=`0vh`
+const navbar= document.querySelector(".nav-bar")
+var r = document.querySelector(':root');
+
+contactUs.addEventListener("click",(event)=>{
+  
+     event.preventDefault();
+    if(contactUs.classList.contains("active")){
+        console.log("pavan");
+        document.documentElement.style
+    
+        .setProperty('--blue', 'circle(50px at 100% 0%)');
+        
+            heady.style.color="white";
+            contactUs.style.color="white";
+    contactUs.classList.remove("active")
+   
+    
+    
+    }
+else{
+    // r.style.setProperty('--blue', 'circle(1900px at 100% 0%)');
+    
+
+    document.documentElement.style
+        .setProperty('--blue', 'circle(1900px at 100% 0%)');
+         
+        
+           
+            contactUs.classList.add("active")
+            setTimeout(()=>{
+                heady.style.color="black";
+                contactUs.style.color="black";
+
+            },500)
+
+      
         
 
-    }
-    if(rightslider.style.top=="0vh"){
-        rightslider.style.top=`-100vh`
-        
-
-    }
-
-
+ 
+    
 }
-const slideUp= (direction)=>{
-    const sliderHeight= slidercontainer.clientHeight
-    if(leftslider.style.top=="0vh"){
-        leftslider.style.top=`-100vh`
-        
+})
 
-    }
-    if(rightslider.style.top=="-100vh"){
-        rightslider.style.top=`0vh`
-        
-
-    }
-
-
-}

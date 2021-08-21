@@ -11,7 +11,7 @@ var url = require('url');
 app.get('/', (req,res) =>{
 var query = require('url').parse(req.url,true).query;
 var uname = query.uname;   
-res.sendFile(__dirname  + '/login.html');
+res.sendFile(__dirname  + '/home.html');
 
 
 app.post('upload/', (req,res)=>{
@@ -67,6 +67,10 @@ res.render('welcome', obj);
 app.get('/forgot', function(req, res){
 res.sendfile("./forgot.html");
  
+});
+
+app.get('/home', function(req, res){
+res.sendfile("./home.html");
 });
   
 if(uname!=null){
