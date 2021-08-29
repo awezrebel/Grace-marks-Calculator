@@ -55,21 +55,22 @@ var obj = {};
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine', 'ejs');
 app.get('/Admin', function(req, res){
- 
+fs.writeFile('logintype.txt', 'adminlogin' , (err) => { }) 
 result = {"Name": "Admin", "image":   "http://localhost:5000/img/Admin.png" };
 obj = {welcome: result};
- res.render('welcome', obj);   
+res.render('welcome', obj);   
 });
 
 
 app.get('/Faculty', function(req, res){
- 
+fs.writeFile('logintype.txt', 'facultylogin' , (err) => { }) 
 result = {"Name": "Faculty", "image":   "http://localhost:5000/img/Faculty.png" };
 obj = {welcome: result};
 res.render('welcome', obj);   
 });
 
 app.get('/Student', function(req, res){
+fs.writeFile('logintype.txt', 'studentlogin' , (err) => { }) 
 result ='Student';
 result = {"Name": "Student", "image":   "http://localhost:5000/img/student.png" };
 obj = {welcome: result};
@@ -78,6 +79,7 @@ return ;
 });
   
 app.get('/Coordinator', function(req, res){
+fs.writeFile('logintype.txt', 'coordlogin' , (err) => { }) 
 result = {"Name": "Co ordinator", "image":   "http://localhost:5000/img/co.png" };
 obj = {welcome: result};
 res.render('welcome', obj);   
@@ -153,7 +155,11 @@ res.send("Your account is blocked ..pls login after 24hrs");
     
 var test = 0;             
 var pd=password;
-mycon.query('SELECT * from login', function (error,login, fields) {
+fs.readFile('logintype.txt', 'utf-8', (err, data) => {
+var sqlquery='SELECT * from ';
+sqlquery +=data;
+
+mycon.query(sqlquery, function (error,login, fields) {
 if (error) throw error;
     
 var length = login.length;
@@ -213,6 +219,7 @@ if(test==0 && m!=null){
 wrongpass();
 }
 });
+})
      
 }})
 }
@@ -260,10 +267,11 @@ console.log("user " + username + "blocked");
 
 
 app.get('/loginwelcome', function(req2, res2){
-
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
 if (err) throw err; 
-mycon.query(`SELECT name FROM login  WHERE (uname ='${data}')`, function(err, result) {
+ 
+mycon.query(`SELECT name FROM ${data1}  WHERE (uname ='${data}')`, function(err, result) {
             
 if(err){
 throw err;
@@ -274,6 +282,8 @@ res2.render('loginwelcome', obj);
 }
 });
 });
+});
+
 
 app.get('/warning', function(req, res){
 res.sendfile("./warning.html");
@@ -283,8 +293,6 @@ app.get('/logout', function(req, res){
 res.sendfile("./logout.html");
 });
 });
-
-
 
 
 

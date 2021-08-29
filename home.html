@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="http://localhost:5000/css/home.css">
-    <form method="GET", action="http://localhost:8000/">  
+    <form method="GET", action="http://localhost:8000/"> 
 </head>
- 
-
 <body>
     <div class="header">
         <h2 class="head">Grace Mark Allocator</h2>
@@ -17,7 +15,9 @@
 
             <a href="">Home</a>
             <a href="#box">Login</a>
-            <a class="contact" href="">Contact Us</a>
+            <a class="contact" href="">Contact us</a>
+            <img class="mode" src="http://localhost:5000/img/sun.png" id="icon">
+            <!-- <a class="mode" href="">Mode</a> -->
         </div>
     </div>
     <div class="container">
@@ -25,7 +25,7 @@
             <h1>
                 Get things done with 0 hassle!
             </h1>
-         
+           
             <div class="quotes">
                 <blockquote class="quote"> 
         
@@ -47,15 +47,17 @@
             <img src="http://localhost:5000/img/undraw_exams_g4ow.svg" alt="">
             <div class="btn-box">
 
-                <button formaction="/Student" > Student Login</button>
+                <button formaction="/Student"> Student Login</button>
             </div>
+
 
         </div>
         <div class="box admin" >
             <img src="http://localhost:5000/img/Admin-rafiki.svg" alt="">
             <div class="btn-box">
 
-                <button  formaction="/Admin" >Admin Login</button>
+                <button formaction="/Admin"> Admin Login</button>
+
             </div>
             
            
@@ -66,7 +68,7 @@
             <img src="http://localhost:5000/img/undraw_teaching_f1cm.svg" alt="">
             <div class="btn-box">
 
-                <button  formaction="/Faculty" >Faculty Login</button>
+                <button formaction="/Faculty"> Faculty Login</button>
             </div>
             
             
@@ -77,7 +79,7 @@
             <img src="http://localhost:5000/img/undraw_quiz_nlyh.svg" alt="">
             <div class="btn-box">
 
-                <button  formaction="/Coordinator" >Co-ordinator Login</button>
+                <button formaction="/Coordinator">Co-ordinator Login</button>
             </div>
 
         </div>
@@ -86,9 +88,9 @@
     </section>
     <nav class="nav-bar">
         <ul class="nav-links">
-            <h3>Twitter</h3>
-            <h3>Youtube</h3>
-            <h3>Facebook</h3>
+            <h3> <a style="color:chocolate;" href="http://localhost:5000/contact.html"> Team </a></h3>
+            <h3><a style="color:chocolate;" href="https://github.com/awezrebel/Grace-marks-Calculator">Github</a></h3>
+            
         </ul>
         <div class="contacts">
             <h2>Stay in touch!</h2>
@@ -96,7 +98,7 @@
         </div>
     </nav>
 
-    <script src="http://localhost:5000/home.js"></script>
+    <script src="http://localhost:5000/js/home.js"></script>
     
 </body>
 </html>

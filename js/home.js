@@ -7,6 +7,41 @@ const heady= document.querySelector(".head")
 
 const navbar= document.querySelector(".nav-bar")
 var r = document.querySelector(':root');
+const mode= document.querySelector(".mode")
+
+
+
+
+//night mode
+mode.addEventListener("click",()=>{
+    mode.classList.toggle("light");
+    if(mode.classList.contains("light")){
+
+        document.documentElement.style
+        
+            .setProperty('--primary-color', 'white');
+        document.documentElement.style
+        
+            .setProperty('--secondary-color', '#21427C');
+        heady.style.color="21427C"
+
+        mode.src="http://localhost:5000/img/moon.png"
+        
+        
+    }
+    else{
+        document.documentElement.style
+        
+            .setProperty('--primary-color', '#21427C');
+        document.documentElement.style
+        
+            .setProperty('--secondary-color', 'white');
+        heady.style.color="21427C"
+        mode.src="http://localhost:5000/img/sun.png"
+
+    }
+
+})
 
 contactUs.addEventListener("click",(event)=>{
   
@@ -17,8 +52,8 @@ contactUs.addEventListener("click",(event)=>{
     
         .setProperty('--blue', 'circle(50px at 100% 0%)');
         
-            heady.style.color="white";
-            contactUs.style.color="white";
+            heady.style.color="var(--secondary-color)";
+            contactUs.style.color="var(--secondary-color)";
     contactUs.classList.remove("active")
    
     
@@ -46,7 +81,7 @@ else{
 })
 
 
-async function jokes(){
+async function quotes(){
     const jokes = await fetch('https://type.fit/api/quotes');
     const final= await jokes.json()
     
@@ -59,5 +94,5 @@ async function jokes(){
 
 }
 
-jokes();
+quotes();
 

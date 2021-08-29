@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="http://localhost:5000/css/contact.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<style>
+.home {
+position: absolute;
+top: 0.8rem;
+right: 10rem;
+}
+
+
+.home button {
+background: #ed710c;
+background-image: -webkit-linear-gradient(top, #ed710c, #e87c2a);
+
+background-image: linear-gradient(to bottom, #ed710c, #e87c2a);
+
+border-radius: 4px;
+text-align: center;
+
+color: #ffffff;
+font-size: 18px;
+padding: 0.5rem;
+padding-right: 1rem;
+padding-left: 1rem;
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: all 0.5s ease-in-out;
+}
+
+.home button:hover {
+background: #3cb0fd;
+text-decoration: none;
+}
+
+
+
+</style>
+
+<body>
+    <div class="header">
+        <div class="messsage">
+            <h1>Meet the creators!</h1>
+        </div>
+        <div class="about-us">
+            <button>About Us</button>  
+            
+        </div>
+        <div class="home">
+            <form method="get" action="http://localhost:8000">
+                <button type="submit">Home</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="img-container">
+        <div class="image">
+            <img src="http://localhost:5000/img/Teammates.png" />
+        </div>
+
+        <div class="creator-btns">
+            <div class="click-btns">
+                <a href="#item1">
+                
+                    <button>Shaik Awez</button>
+                </a>
+            </div>
+            <div class="click-btns">
+                <a href="#item2">
+                
+                    <button>Pavan Kruthik.N</button>
+                </a>
+
+            </div>
+            <div class="click-btns">
+                <a href="#item3">
+                
+                    <button>Upendra.P</button>
+                </a>
+
+            </div>
+            <div class="click-btns">
+                <a href="#item4">
+                
+                    <button>Pruthve Rej</button>
+                </a>
+
+            </div>
+            <div class="click-btns">
+                <a href="#item5">
+                
+                    <button>Lokesh Gupta</button>
+                </a>
+
+            </div>
+        </div>
+       
+
+        <div class="creator-container">
+            <div class="item" id="item1">
+                <img src="http://localhost:5000/img/awez.png" alt="">
+                <span>Back end Developer</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>6303731463</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>shaikawez@gmail.com</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="item" id="item2">
+                <img src="http://localhost:5000/img/pavan.png" alt="">
+                <span>Front end Developer</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>8341900899</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>kruthik24@gmail.com</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="item" id="item3">
+                <img src="http://localhost:5000/img/upendra.png" alt="">
+                <span>Front end Developer</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>9182410276</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>p_upendra@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item" id="item4">
+                <img src="http://localhost:5000/img/pruthve.png" alt="">
+                <span>Tester</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>9381044045</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>p_pruthve@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item" id="item5">
+                <img src="http://localhost:5000/img/lokesh.png" alt="">
+                <span>Tester</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>8142838171</span> 
+                    <div class="mail">
+                        <i class="fas fa-envelope"></i>
+
+                        <span>g_lokesh@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="http://localhost:5000/js/contact.js"></script>
+</body>
+
+</html>
