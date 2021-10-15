@@ -121,7 +121,7 @@ font-size:15px;
   
 .proceed {
 position:absolute;
-bottom: 100px;
+bottom: 70px;
 left: 740px;
  
 font-size:15px;
@@ -146,15 +146,10 @@ h2{
 
 
 body{
-  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-  height: 97vh;
-   
-    justify-content: center;
-    align-items: center;
-     
+  background-color: black;
 }
 h1{
-    color: black;
+    color: white;
     text-align: left;
     font-size: x-large;
     font-style: italic;
@@ -179,8 +174,31 @@ font-size:15px;
   cursor: pointer;
   margin: 5px;
 }
+
+
+ 
+.yellow {
+  position:absolute;
+bottom: 70px;
+left: 770px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+   
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
 </style>
  
+  
   
    
 <form method="GET", action="http://localhost:8000/">     
@@ -199,15 +217,31 @@ font-size:15px;
   
 </tbody>
 </table>
+<center> 
 
+
+<img src="https://cdn.dribbble.com/users/32512/screenshots/5276094/smile_loader_by_gleb.gif" ></img>
  
-      
+</center>  
 <button class="logout" formaction="/warning">Logout</button>
-<button class="proceed" id="proceed" formaction="/data">Proceed</button>
+<button class="yellow" id="yellow" formaction="/data">Proceed</button>
 
  
  
 </body>
 
+<script>
+
+
+  function initialSetup() {
+    if (document.getElementById("yellow") != null) {
+      setTimeout(function() {
+        document.getElementById('yellow').style.display = 'block';
+      }, 2000);
+    }
+  }
+  
+  initialSetup();
+  </script>
  
 </html>

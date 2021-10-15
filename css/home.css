@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
 @import url("https://fonts.googleapis.com/css?family=Lobster");
 
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 :root {
   --blue: circle(50px at 100% 0%);
   --primary-color: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
   --secondary-color: white;
-
 }
 
 * {
@@ -90,7 +89,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color:var(--secondary-color);
+  color: var(--secondary-color);
 }
 .mini-cont h1 {
   font-size: 2.5rem;
@@ -98,7 +97,6 @@ body {
   margin-bottom: 1.5rem;
   font-weight: bold;
   line-height: 1;
-  
 }
 
 .mini-cont h3 {
@@ -214,7 +212,7 @@ button:hover:after {
 .contact {
   display: relative;
   z-index: 1;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .nav-links h3 {
@@ -226,37 +224,34 @@ button:hover:after {
   color: blue;
 }
 
-.quotes{
+.quotes {
   /* border: 2px solid red; */
   width: 70%;
   height: 40%;
   text-align: center;
-  font-size:1.9rem;
+  font-size: 1.9rem;
   display: grid;
   place-items: center;
   position: relative;
-  font-family: 'Satisfy', cursive;
+  font-family: "Satisfy", cursive;
   margin-top: 2rem;
-
-  
 }
-.quote{
-padding-top: 3rem;
+.quote {
+  padding-top: 3rem;
 }
-.author{
+.author {
   color: orange;
   padding-bottom: 2rem;
   padding-left: 10rem;
-  font-size:1.1rem;
+  font-size: 1.1rem;
   font-style: italic;
-
 }
 
-.quotes:before{
-  color:#ccc;
-  content:"";
-  font-size:2em;
-  line-height:.1em;
+.quotes:before {
+  color: #ccc;
+  content: "";
+  font-size: 2em;
+  line-height: 0.1em;
   position: absolute;
   border: 2px solid var(--secondary-color);
   border-top: transparent;
@@ -264,31 +259,68 @@ padding-top: 3rem;
   rotate: 90deg;
   height: 10px;
   width: 10px;
-  top:1.4rem;
-  left:-0.5rem;
-  
+  top: 1.4rem;
+  left: -0.5rem;
 }
-.quotes:after{
-  color:#ccc;
-  content:"";
-  font-size:2em;
-  line-height:.1em;
+.quotes:after {
+  color: #ccc;
+  content: "";
+  font-size: 2em;
+  line-height: 0.1em;
   position: absolute;
   border: 2px solid var(--secondary-color);
   border-top: transparent;
   height: 10px;
   width: 10px;
   border-left: transparent;
-  
-  bottom:1.4rem;
-  right:-0.5rem;
-  
 
+  bottom: 1.4rem;
+  right: -0.5rem;
 }
 
-
-#icon{
+#icon {
   width: 30px;
   cursor: pointer;
+}
 
+.nav-links h3 a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: #1f3c72;
+  text-align: center;
+}
+
+.contacts {
+  color: #1f3c72;
+  font-size: 3rem;
+}
+
+.nav-links {
+  border-radius: 50px;
+  background: #efefef;
+  box-shadow: -12px 12px 24px #d9d9d9, 12px -12px 24px #ffffff;
+  width: 26rem;
+  height: 16rem;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar img {
+  margin-top: 2rem;
+  height: 40px;
+  margin-left: 1rem;
+}
+
+.git,
+.ourTeam {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.git img {
+  height: 55px;
+  margin-top: 1.5rem;
 }

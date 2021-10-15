@@ -8,27 +8,35 @@ var mysql = require('mysql');
 const fs = require('fs'); 
 var ejs = require('ejs');
 //app.use(upload());
+//mysql connection
+var uname=null;
+var mycon = mysql.createConnection({
+connectionLimit: 10,
+acquireTimeout: 30000, //30 secs
+host: "localhost",
+user: "root",
+password: "Awez@0987", // sensitive
+multipleStatements: true ,
+port: "3306",
+database: "database1"
+});
+         
+var c=0;
+ 
 
 
 app.get('/', (req,res) =>{
 var query = require('url').parse(req.url,true).query;
-var uname = query.uname;   
-res.sendFile(__dirname  + '/home.html');
-
-
-
+uname = query.uname;
 //truncating temporary values
 //truncating temporary files
-var c=0;
-if(c==0){
 
-fs.truncate('block.txt', 0, function() {
-console.log("File Content Deleted");
-});
-    
-fs.truncate('out.txt', 0, function() {
-console.log("File Content Deleted");
-});
+
+if(c==0){
+res.sendFile(__dirname  + '/home.html');
+fs.truncate('block.txt', 0, function() {});
+fs.truncate('logintype.txt', 0, function() {});   
+fs.truncate('out.txt', 0, function() {});
     
 c+=1;
 }
@@ -100,11 +108,76 @@ res.redirect('/otp');
 }
 
 app.get('/otp', function(req, res){
+fs.writeFile('currentlogin.txt', uname , (err) => {  });
 res.sendfile("./otp.html");
 var spawn = require("child_process").spawn; 
 var process = spawn('python',["./otp.py",] ); 
 console.log("Generating Otp " + process);
 });
+
+
+
+//forgot password
+
+var ack=null;
+ 
+//forgot password otp
+  
+var uname1=query.uname1;
+var pwd=query.pwd;
+var cpwd=query.cpwd;
+var otp_user=query.otp;
+if(otp_user!=null){
+mycon.query('SELECT * from otp', function (error,otp, fields) {
+if (error) throw error;
+var length = otp.length;
+var p=null;
+
+for(var i = 0; i < length; i++){
+if (otp[i].user==uname1){
+
+p=i;
+
+if(otp[p].otp==otp_user){
+
+if(pwd==cpwd){
+forgotpass();
+}else{
+res.send("password and confirm password are not same");
+}
+
+}else{
+res.send("please provide the correct otp");
+}
+}
+}
+})
+console.log("user " + uname1 + "  otp user got = " + otp_user + " acknowledge " + ack )
+ 
+ 
+ 
+    
+
+
+
+function forgotpass() {
+fs.readFile('logintype.txt', 'utf-8', (err, data) => {
+const sql3=`UPDATE ${data} SET pwd = '${pwd}' WHERE (uname ='${uname1}')`;
+mycon.query(sql3, function (err, result) {
+if (err) throw err;
+console.log(result);
+});
+});
+res.sendfile("usuccess.html");
+ 
+}
+}
+
+
+
+
+
+
 
 })
 
@@ -120,19 +193,7 @@ console.log("Generating Otp " + process);
 //login
 app.get('/homelogin', function(req, res){
 
-//mysql connection
-
-var mycon = mysql.createConnection({
-connectionLimit: 10,
-acquireTimeout: 30000, //30 secs
-host: "localhost",
-user: "root",
-password: "Awez@0987", // sensitive
-multipleStatements: true ,
-port: "3306",
-database: "database1"
-});
-        
+   
 
 
 var query = require('url').parse(req.url,true).query;
@@ -266,6 +327,8 @@ console.log("user " + username + "blocked");
 
 
 
+
+
 app.get('/loginwelcome', function(req2, res2){
 fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
@@ -283,6 +346,39 @@ res2.render('loginwelcome', obj);
 });
 });
 });
+
+app.get('/data' , function(req,res){
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err; 
+
+mycon.query( `SELECT * FROM marks , profile where  ( profile.rollno = '${data}') ` , function(err, result) {
+
+if(err){
+throw err;
+} else {
+obj = {students: result};
+        
+res.render('students', obj);           
+}
+});
+});
+})
+})
+
+app.get('/grading' , function(req,res){
+mycon.query( `SELECT * FROM database1.gradingscheme; ` , function(err, result) {
+if(err){
+throw err;
+} else {
+obj = {grading : result};
+            
+res.render('grading', obj);           
+}
+});
+ 
+})
+
 
 
 app.get('/warning', function(req, res){
