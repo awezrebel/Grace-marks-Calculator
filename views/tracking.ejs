@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<body>
+<style>
+ 
+
+ table, th, td {
+  border:1px solid black;
+  text-align: center;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ 
+ 
+body{
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  height: 99.5vh;
+   
+    justify-content: center;
+    align-items: center;
+     text-align: center;
+}
+ 
+.button {
+  
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+  
+ 
+  
+ 
+h2{
+  text-align: center;
+}
+
+
+</style>
+ 
+<table id="table" >  
+<thread>  
+<tr>    
+<form method="GET", action="http://localhost:8000/">     
+</tr>  
+
+ 
+
+  <h2>
+Tracking of Paper Publication
+  </h2>
+ 
+
+ 
+    <table style="width: 1000px;" ><center> 
+        <% tracking.forEach(function (students) { %>
+
+            <tr>
+                
+                <td>Project id</td>
+                <td>Tiltle </td>
+                <td>Team</td>
+                <td>Dataset</td>
+                <td>Section</td>
+                <td>Guide</td>
+                <td>Approved</td>
+                <td>Status</td>
+                <td>Supporting Documents</td>
+                <td>Contact</td>
+            </tr>
+            
+            <tr>  
+                <td><%=  students.projectid%>     </td> 
+                <td> <%= students.title%>      </td>
+                <td> <%= students.team%>      </td>
+                <td> <%= students.Dataset%>      </td>
+                <td> <%= students.section%>      </td>
+                <td> <%= students.guide%>      </td>
+                <td> <%= students.Approved%>      </td>
+                <td> <%= students.status%>      </td>
+                 
+               <td> <a href="<%= students.documents%>" >Click here</a></td>
+                <td> <%= students.contact%>      </td>
+     
+        <% }) %>
+       </tr>   </center>
+  </table>
+
+     
+        
+   
+
+ 
+
+ 
+</div>
+    
+</body>
+
+ 
+ 
+<button class="button"  onclick="window.close()">Close</button>
+
+</html>

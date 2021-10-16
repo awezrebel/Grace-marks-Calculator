@@ -48,7 +48,10 @@ body {
 }
 
 body{
-    background-color: rgba(236, 18, 73, 0.15);   
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    height: 95.5vh;
+   
+     
 }
 
 h1{
@@ -98,7 +101,7 @@ table, th, td {
   <a href="#" onclick="Profile()" >Profile</a>
   <a href="#" onclick="marks()" >View Marks</a>
  
-  <a href="#" onclick="events()">Events</a>
+ 
 
   <a href="http://localhost:8000/grading"    onclick="window.open(this.href,'targetWindow',
                                    `toolbar=no,
@@ -109,7 +112,55 @@ table, th, td {
                                     resizable=yes,
                                     width=1050,
                                     height=600`) ;
- return false;">Grading Scheme</a>     
+ return false;">Grading Scheme</a>    
+
+
+<a href="http://localhost:8000/attendance"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=1050,
+  height=600`) ;
+return false;">Attendance</a> 
+
+
+<a href="http://localhost:8000/faculty_details"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=full,
+  height=full`) ;
+return false;">Faculty Details</a> 
+
+
+ 
+<a href="http://localhost:8000/uploading"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=1050,
+  height=600`) ;
+return false;">Events</a> 
+
+<a href="http://localhost:8000/classissues"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=1050,
+  height=600`) ;
+return false;">Report Class Issues</a> 
  
 </div>
 
@@ -156,8 +207,43 @@ table, th, td {
  
   </tr>
   <tr>
+    <th> Section</th>
+    <td><%=students.section%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Branch</th>
+    <td><%=students.branch%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Year</th>
+    <td><%=students.year%> </td>
+ 
+  </tr>
+  <tr>
     <th> CGPA</th>
     <td><%=students.cgpa%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Mobile</th>
+    <td><%=students.mobile%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Projects</th>
+    <td><%=students.projects%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Mail</th>
+    <td><%=students.mail%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Address</th>
+    <td><%=students.address%> </td>
  
   </tr>
 </table>
@@ -165,7 +251,7 @@ table, th, td {
 </div>  
 
 
-<div id="marks" class="student" <table style="width:75%"> 
+<div id="marks" class="student" <table style="width:100%"> 
   <table>
     
     <tr>
@@ -199,87 +285,10 @@ table, th, td {
     
      </tr>
 </table> <% }) %>
-
-</div>
  
-<div id="grading" class="student">
-
-
-  <table id="table" >  
-    <thread>  
-    <tr>    
-    <form method="GET", action="http://localhost:8000/">     
-    </tr>  
-    
-     
-    
-        
-      <h2>Students Data </h2>   
-      <center>
-    
-     
-        <div class="loader">
-          <div></div>    
-        
-          </div>
-        </center>
-     
-    </thead>  
-    <tbody>
-        <div class="container">
-         
-            <table class="table table-striped">
-              <thead>
-                <tr>
+   
       
-                 <button class="button0" formaction="/students">Roll no</button>  
-            
-                 <button class="button1"  formaction="/students">Name</button>
-                 <button class="button2"  formaction="/students">DOB</button>
-              
-    
-              <button class="button3"  formaction="/students">Mobile</button>
-                 <button class="button4"  formaction="/students">CGPA</button>
-                 <button class="button5"  formaction="/students">Mother</button>
-                 <button class="button6"  formaction="/students">Father</button>
-                 <button class="button7"  formaction="/students">Parent Mobile</button>
-                 <button class="button8"  formaction="/students">Address</button> 
-                 <button class="button9"  formaction="/students">G-Mail ID</button>   
-                 <button class="button10"  formaction="/students">Photo</button>    
-                </tr>
-                </thead>
-        
-             
-    
-                <div class="container"> 
-            <table class="table table-striped">
-            <% students.forEach(function (students) { %>  
-           <tr> 
-           
-            <td><%=  students.rollno%>     </td> 
-            <td> <%= students.username%>      </td>
-            <td> <%= students.dob %>   </td> 
-            <td> <%= students.mobile %>   </td> 
-            <td> <%= students.cgpa%>   </td> 
-           
-           
-            <td> <%= students.mother %>   </td> 
-            <td> <%= students.father %>   </td> 
-            <td> <%= students.parentmobile %>   </td> 
-            <td> <%= students.address %>   </td> 
-            <td> <%= students.mail %>   </td> 
-               
-            <td>  <img src="data:image/jpg;base64,<%=students.images%>" width="150" alt="image not available"></img> </td> 
-          </tr> 
-                    
-            <% }) %>
      
-    
-      
-    </tbody>
-    </table>
-
-</div> 
  
  </center>
 <script>

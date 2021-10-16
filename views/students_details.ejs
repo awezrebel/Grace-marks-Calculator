@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<body>
+<style>
+ 
+
+
+.home {
+position:absolute;
+top: 10px;
+right: 120px;
+font-size: 100px;
+}
+
+.info {
+position:absolute;
+top: 10px;
+right: 85px;
+font-size: 100px;
+}
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+ 
+
+ 
+body {
+  background-image:url(" https://w.wallhaven.cc/full/39/wallhaven-39mxkv.png");
+ 
+         background-size: 1560px;
+         
+}
+.edit {
+position:absolute;
+top: 10px;
+right: 100px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.home {
+position:absolute;
+top: 10px;
+right: 190px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+  
+div.polaroid {
+  
+  width: 9%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
+}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+} 
+ 
+  
+.closebutton {
+position:absolute;
+bottom: 100px;
+left: 450px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.add  {
+position:absolute;
+ 
+left: 650px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.Remove  {
+position:absolute;
+ 
+left: 750px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+h2{
+  text-align: center;
+}
+
+
+
+
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.refresh {
+position:absolute;
+top: 10px;
+right: 100px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+
+.wel_admin {
+position:absolute;
+top: 10px;
+right: 200px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loader:after {
+  
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid yellow;
+  border-color:red transparent yellow transparent;
+  animation: loader 1.2s linear infinite;
+  text-align: center;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+ 
+
+.button0{
+background: transparent;
+}
+
+
+.button1{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 150px;
+
+}
+
+.button2{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 250px;
+
+}
+
+.button3{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 350px;
+
+}
+
+
+
+.button4{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 410px;
+
+}
+
+
+.button4{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 425px;
+
+}
+
+.button5{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 490px;
+
+}
+
+
+.button6{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 580px;
+
+}
+
+.button7{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 680px;
+
+}
+
+.button8{
+background: transparent;
+position:absolute;
+top: 85px;
+left: 850px;
+
+}
+
+.button9{
+background: transparent;
+position:absolute;
+top: 85px;
+right: 250px;
+
+}
+
+
+.button10{
+background: transparent;
+position:absolute;
+top: 85px;
+right: 90px;
+
+}
+</style>
+ 
+<table id="table" >  
+<thread>  
+<tr>    
+<form method="GET", action="http://localhost:8000/">     
+</tr>  
+
+ 
+
+    
+  <h2>Students Data </h2>   
+  <center>
+
+ 
+    <div class="loader">
+      <div></div>    
+    
+      </div>
+    </center>
+ 
+</thead>  
+<tbody>
+    <div class="container">
+     
+        <table class="table table-striped">
+          <thead>
+            <tr>
+  
+             <button class="button0" formaction="/students">Roll no</button>  
+        
+             <button class="button1"  formaction="/students">Name</button>
+             <button class="button2"  formaction="/students">DOB</button>
+          
+
+          <button class="button3"  formaction="/students">Mobile</button>
+             <button class="button4"  formaction="/students">CGPA</button>
+             <button class="button5"  formaction="/students">Mother</button>
+             <button class="button6"  formaction="/students">Father</button>
+             <button class="button7"  formaction="/students">Parent Mobile</button>
+             <button class="button8"  formaction="/students">Address</button> 
+             <button class="button9"  formaction="/students">G-Mail ID</button>   
+             <button class="button10"  formaction="/students">Photo</button>    
+            </tr>
+            </thead>
+    
+         
+
+            <div class="container"> 
+        <table class="table table-striped">
+        <% students_details.forEach(function (students) { %>  
+       <tr> 
+       
+        <td><%=  students.rollno%>     </td> 
+        <td> <%= students.username%>      </td>
+        <td> <%= students.dob %>   </td> 
+        <td> <%= students.mobile %>   </td> 
+        <td> <%= students.cgpa%>   </td> 
+       
+       
+        <td> <%= students.mother %>   </td> 
+        <td> <%= students.father %>   </td> 
+        <td> <%= students.parentmobile %>   </td> 
+        <td> <%= students.address %>   </td> 
+        <td> <%= students.mail %>   </td> 
+           
+        <td>  <img src="<%=students.images%>" width="150" alt="image not available"></img> </td> 
+      </tr> 
+                
+        <% }) %>
+ 
+
+  
+</tbody>
+</table>
+
+ 
+ 
+  
+
+<button class="logout" onclick="window.close()">Close</button>  
+<button class="refresh" formaction="/students">Refresh</button>  
+ 
+
+<script>
+  $(window).on('load',function(){
+  $(".loader").fadeOut(1000);
+  
+  })
+</script> 
+</body>
+
+ 
+</html>

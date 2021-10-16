@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+body{
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    height: 95.5vh;
+   
+     
+}
+
+h1{
+    text-align: center;
+}
+
+
+.image{
+top: 0;
+ text-align: right;
+}
+
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+table, th, td {
+  border:1px solid black;
+  text-align: center;
+}
+.student{
+  display: none;
+}
+</style>
+
+<form method="GET", action="http://localhost:8000/">    
+</head>
+<body>
+<h1>
+    Grace mark for publication
+</h1>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" onclick="Profile()" >Profile</a>
+ 
+ 
+
+
+
+
+  <a href="http://localhost:8000/grading"    onclick="window.open(this.href,'targetWindow',
+                                   `toolbar=no,
+                                    location=center,
+                                    status=no,
+                                    menubar=no,
+                                    scrollbars=yes,
+                                    resizable=yes,
+                                    width=1050,
+                                    height=600`) ;
+ return false;">Grading Scheme</a>    
+ 
+ 
+<a href="http://localhost:8000/students"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=full,
+  height=full`) ;
+return false;">View Students</a> 
+ 
+
+
+
+<a href="http://localhost:8000/class_issues"    onclick="window.open(this.href,'targetWindow',
+`toolbar=no,
+location=center,
+status=no,
+menubar=no,  
+scrollbars=yes,
+resizable=yes,
+width=full,
+height=full`) ;
+return false;">Class Issues</a> 
+
+
+<a href="http://localhost:8000/tracking"    onclick="window.open(this.href,'targetWindow',
+`toolbar=no,
+location=center,
+status=no,
+menubar=no,  
+scrollbars=yes,
+resizable=yes,
+width=full,
+height=full`) ;
+return false;">Project tracking</a> 
+</div>
+
+
+   
+<% students.forEach(function (faculty) { %> 
+       
+    <h2>
+      <%= "Hello,  "  + faculty.username%>     
+     <% }) %>
+  </h2> 
+
+ 
+  
+
+
+    
+ 
+ 
+
+
+
+
+
+<span style="font-size:30px;cursor:pointer " onclick="openNav()" >&#9776; Menu</span>
+<% students.forEach(function (faculty) { %>
+
+<div class="image" >
+<img  src="<%=faculty.images%>" width="150" alt="image not available"> </img>  </div>
+
+<center>
+<div id="Profile" class="student">   <table style="width:45%">
+  <tr>
+    <th>Roll No</th>
+    
+    <td><%=faculty.rollno%></td>
+    
+    
+  </tr>
+  <tr>
+    <th>Name</th>
+     
+    <td><%= faculty.username%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Alloted Sections</th>
+    <td><%=faculty.section%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Branch</th>
+    <td><%=faculty.branch%> </td>
+ 
+  </tr>
+  <tr>
+    <th>Graduation Year</th>
+    <td><%=faculty.year%> </td>
+ 
+  </tr>
+ 
+  <tr>
+    <th> Mobile</th>
+    <td><%=faculty.mobile%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Projects</th>
+    <td><%=faculty.projects%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Mail</th>
+    <td><%=faculty.mail%> </td>
+ 
+  </tr>
+  <tr>
+    <th> Address</th>
+    <td><%=faculty.address%> </td>
+ 
+  </tr>
+</table> <% }) %>
+ 
+</div>  
+
+
+ 
+ 
+ 
+    <form method="GET", action="http://localhost:8000/">     
+     
+    
+ 
+ 
+ 
+ </center>
+<script>
+
+ 
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+     
+
+    function Profile() {
+  var x = document.getElementById("Profile");
+  if (x.style.display === "none") {
+  x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+ 
+
+ 
+ 
+
+</script>
+   
+ 
+
+<button class="logout" formaction="/warning">Logout</button>
+</body>
+</html> 

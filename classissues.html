@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+
+    body{
+        
+        text-align: center;
+        background-image: url('https://static.wixstatic.com/media/11062b_e1b6e99f6b3946e48fd07ea6d737c122~mv2.jpg/v1/fit/w_1980,h_1080/11062b_e1b6e99f6b3946e48fd07ea6d737c122~mv2.jpg') ;
+        background-repeat: no-repeat;
+        background-size: 1550px 730px;
+    }
+
+.submit {  
+font-size:15px;
+border-radius: 3px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 15px;
+padding: 7px;
+width: 70px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+   
+
+
+</style>
+<body>
+    <h1>
+       Class issues Portal
+    </h1>
+
+    <p>Note : Your Advisor , Mentor can see your issue</p>
+    <form method="GET" action="http://localhost:8000/" >
+
+    
+      Section:<input type="text" name="section" required >
+<br> <br>
+    <label for="issue">Class issue:</label>
+    <textarea id="issue" name="issue" rows="4" cols="50" placeholder="Type your issue here"  required>
+    </textarea><br> <br> 
+  <button type="submit" class="submit"  value="submit">Submit </button>
+</form>
+
+
+ 
+
+</body>
+
+
+</html>

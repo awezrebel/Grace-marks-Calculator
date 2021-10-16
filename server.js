@@ -7,7 +7,15 @@ var url = require('url');
 var mysql = require('mysql');
 const fs = require('fs'); 
 var ejs = require('ejs');
+var bodyParser = require('body-parser');
+
 //app.use(upload());
+ 
+
+ 
+
+
+
 //mysql connection
 var uname=null;
 var mycon = mysql.createConnection({
@@ -45,7 +53,8 @@ c+=1;
 
 
 
-
+ 
+        
 
 
 
@@ -102,7 +111,9 @@ res.sendfile("./forgot.html");
 app.get('/home', function(req, res){
 res.sendfile("./home.html");
 });
-  
+ 
+
+
 if(uname!=null){
 res.redirect('/otp');
 }
@@ -127,6 +138,10 @@ var uname1=query.uname1;
 var pwd=query.pwd;
 var cpwd=query.cpwd;
 var otp_user=query.otp;
+
+
+
+
 if(otp_user!=null){
 mycon.query('SELECT * from otp', function (error,otp, fields) {
 if (error) throw error;
@@ -174,8 +189,22 @@ res.sendfile("usuccess.html");
 }
 
 
+var issue = query.issue;
+var section=query.section;
+ 
 
 
+app.get('/classissues', function(req, res){
+res.sendfile("./classissues.html");
+        
+});
+        
+if(issue!=null && section!=null){ console.log("dssssssss" + issue + section);
+mycon.query(` INSERT INTO database1.classissues (section, issue) VALUES ('${section}', '${issue}');`, function(err, result) {
+if(err){ throw err; }
+res.sendfile("./usuccess.html");
+})
+}
 
 
 
@@ -192,11 +221,10 @@ res.sendfile("usuccess.html");
 
 //login
 app.get('/homelogin', function(req, res){
-
-   
-
-
 var query = require('url').parse(req.url,true).query;
+ 
+
+ 
 
 var username = query.username;
 var password=query.password;
@@ -358,13 +386,98 @@ if(err){
 throw err;
 } else {
 obj = {students: result};
-        
-res.render('students', obj);           
+ if(data1=="facultylogin"){
+ res.render('faculty', obj);
+ }else{
+    res.render('students', obj);    
+ }  
+       
 }
 });
 });
 })
 })
+
+
+//Retriving Students Details
+
+
+var obj1 = {};
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
+app.get('/students', function(req, res) { 
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err;         
+mycon.query(`  SELECT * FROM database1.profile; `, function(err, result) {
+        if(err){
+        throw err;
+        } else {
+        obj1 = {students_details: result};
+        res.render('students_details', obj1);   
+       // console.log(obj1);      
+        }
+        });
+});
+}); 
+
+//Retriving Faculty Details
+
+ 
+app.get('/faculty_details', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.profile where type="faculty"; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {faculty_details: result};
+res.render('faculty_details', obj2);   
+}});
+ 
+}); 
+
+ 
+app.get('/class_issues', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.classissues; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {class_issues: result};
+res.render('class_issues', obj2);   
+}});         
+}); 
+
+app.get('/tracking', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.tracking; `, function(err, result) {
+if(err){        throw err;
+} else {
+obj2 = {tracking: result};
+res.render('tracking', obj2);   
+}});         
+}); 
+        
+
+
+app.get('/attendance' , function(req,res){
+mycon.query( `SELECT * FROM database1.attendance; ` , function(err, result) {
+if(err){
+throw err;
+} else {
+obj = {attendance : result};
+                    
+res.render('attendance', obj);           
+}
+});
+         
+})
+
+
+
+
+
+
+
 
 app.get('/grading' , function(req,res){
 mycon.query( `SELECT * FROM database1.gradingscheme; ` , function(err, result) {
@@ -379,7 +492,35 @@ res.render('grading', obj);
  
 })
 
+app.get('/uploading' , function(req,res){
+var spawn = require("child_process").spawn; 
+var process = spawn('node',["./upload.js",] ); 
+console.log("upload js file started  " + process);
+        
+        
 
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err; 
+mycon.query( `SELECT * FROM marks , profile where  ( profile.rollno = '${data}') ` , function(err, result) {
+        
+if(err){
+throw err;
+} else {
+obj = {upload: result};
+                
+res.render('upload', obj);           
+}
+});
+});
+})
+     
+})
+
+
+ 
+ 
+ 
 
 app.get('/warning', function(req, res){
 res.sendfile("./warning.html");
