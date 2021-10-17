@@ -379,19 +379,22 @@ app.get('/data' , function(req,res){
 fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
 if (err) throw err; 
-
-mycon.query( `SELECT * FROM marks , profile where  ( profile.rollno = '${data}') ` , function(err, result) {
+var obj={}
+mycon.query( `SELECT * FROM  profile where  ( profile.rollno=  '${data}' );` , function(err, result) {
 
 if(err){
 throw err;
 } else {
 obj = {students: result};
- if(data1=="facultylogin"){
- res.render('faculty', obj);
- }else{
-    res.render('students', obj);    
- }  
-       
+if(data1=="facultylogin"){
+res.render('faculty', obj);
+}
+else if(data1=="coordlogin"){ 
+res.render('coord', obj);    
+}  
+else if(data1=="studentlogin"){ 
+res.render('students', obj);    
+}       
 }
 });
 });
@@ -408,7 +411,7 @@ app.set('view engine', 'ejs');
 app.get('/students', function(req, res) { 
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
 if (err) throw err;         
-mycon.query(`  SELECT * FROM database1.profile; `, function(err, result) {
+mycon.query(`  SELECT * FROM database1.profile where type="student"; `, function(err, result) {
         if(err){
         throw err;
         } else {
@@ -472,7 +475,31 @@ res.render('attendance', obj);
          
 })
 
+ 
+app.get('/marks', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.marks; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {marks: result};
+res.render('marks', obj2);
+}});
+}); 
 
+app.get('/selfmarks', function(req, res) {      
+var obj2={}  
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err;  
+mycon.query(` SELECT * FROM database1.marks where rollno =  '${data}'; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {marks: result};
+res.render('marks', obj2);
+}});
+});
+}); 
 
 
 

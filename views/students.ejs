@@ -99,7 +99,16 @@ table, th, td {
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#" onclick="Profile()" >Profile</a>
-  <a href="#" onclick="marks()" >View Marks</a>
+  <a href="http://localhost:8000/selfmarks"    onclick="window.open(this.href,'targetWindow',
+ `toolbar=no,
+  location=center,
+  status=no,
+  menubar=no,
+  scrollbars=yes,
+  resizable=yes,
+  width=1050,
+  height=600`) ;
+return false;">View Marks</a> 
  
  
 
