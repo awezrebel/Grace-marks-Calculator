@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        background-image:url(" https://w.wallhaven.cc/full/39/wallhaven-39mxkv.png");
+         background-size: 1560px;
+       
+    }
+
+
+.button1{
+font-size:15px;
+bottom: 100px;
+left: 450px;
+border-radius: 3px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+ 
+padding: 7px;
+width: 70px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+.button2{
+font-size:15px;
+bottom: 100px;
+left: 460px;
+border-radius: 3px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+ 
+padding: 9px;
+width: 110px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+ 
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+
+.active {
+position:absolute;
+top: 10px;
+right: 110px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+
+
+  padding: 7px;
+  width: 110px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+</style>
+<form method="GET", action="http://localhost:8000/">   
+<body>
+    <h1>
+        Welcome Admin , Glad you are here 
+    </h1>
+<image src=" https://import.thimpress.com/wp-content/uploads/sites/eduma/2020/11/bg-page.jpg" alt="image not available "  width="800"></image><br><br>
+<button class="button1" , formaction="/students">Students</button><br><br>
+<image src="https://www.nea.org/sites/default/files/legacy/2020/04/new_teacher.jpeg" alt="image not available "  width="500"></image><br><br>
+<button class="button1" , formaction="/faculty_details">Teacher</button><br><br>
+<image src="http://localhost:5000/img/co.png" alt="image not available "  width="200"></image><br><br>
+<button class="button2" , formaction="/coord_details">Co ordinator</button>
+
+
+<button class="active" , formaction="/currentlogin">Active Logins</button>
+<button  class="logout" formaction="/warning" >Logout</button>
+</body>
+</html>

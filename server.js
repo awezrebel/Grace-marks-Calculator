@@ -74,8 +74,9 @@ app.set('view engine', 'ejs');
 app.get('/Admin', function(req, res){
 fs.writeFile('logintype.txt', 'adminlogin' , (err) => { }) 
 result = {"Name": "Admin", "image":   "http://localhost:5000/img/Admin.png" };
-obj = {welcome: result};
-res.render('welcome', obj);   
+/*obj = {welcome: result};
+res.render('welcome', obj);  */
+res.sendfile ("./admin.html");
 });
 
 
@@ -218,7 +219,9 @@ res.sendfile("./usuccess.html");
 }
 
 
-})
+
+
+
 
 
 
@@ -230,9 +233,55 @@ res.sendfile("./usuccess.html");
 
 
 //login
-app.get('/homelogin', function(req, res){
-var query = require('url').parse(req.url,true).query;
  
+var query = require('url').parse(req.url,true).query;
+ //Admin Logging in
+
+
+var ad_uname=query.admin_uname;
+var ad_pass=query.admin_password;
+
+if(ad_uname != undefined && ad_pass != undefined){
+if(ad_uname=="admin" && ad_pass =="1234"){
+res.sendfile("welcome_admin.html");
+}
+}
+
+app.get('/welcome_admin', function(req, res){
+res.sendfile("./welcome_admin.html");
+});
+
+
+
+app.get('/currentlogin',function(req,res){
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+var datac=data.split(",");
+        
+if (err) throw err;         
+mycon.query(`  select username,rollno, mobile, cgpa, images, mail from profile WHERE (rollno ='${data}')`, function(err, result) {
+if(err){
+throw err;
+} else {
+obj1 = {activelogins: result};
+res.render('activelogins', obj1);   
+//console.log(obj1);      
+}
+});
+})
+});
+
+app.get('/loginhistory',function(req,res){
+      
+mycon.query(`SELECT  user , date, time  , images from loginhistory , profile  where (profile.rollno=user )`, function(err, result) {
+if(err){
+throw err;
+} else {
+obj1 = {loginhistory: result};
+res.render('loginhistory', obj1);   
+//console.log(obj1);      
+}
+});         
+});
 
  
 
@@ -448,6 +497,19 @@ res.render('faculty_details', obj2);
  
 }); 
 
+//Retriving Co ordinator details
+app.get('/coord_details', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.profile where type="coord"; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {faculty_details: result};
+res.render('faculty_details', obj2);   
+}});         
+}); 
+
+
  
 app.get('/class_issues', function(req, res) {      
 var obj2={}  
@@ -569,19 +631,30 @@ res.sendfile("./restrict.html");
 });
  
  
+});
 
 app.get('/warning', function(req, res){
 res.sendfile("./warning.html");
 });
 
 app.get('/logout', function(req, res){
-res.sendfile("./logout.html");
+res.sendfile("logout.html");
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err; 
+mycon.query(  `truncate table database1.currentlogin `,function(err,result){
+if(err) throw err;
+// console.log(result);
+});
+fs.truncate('currentlogin.txt', 0, function() {
+console.log("File Content Deleted");
+});
 });
 });
 
+})
 
 
-});
+
      
      
 
