@@ -88,6 +88,18 @@ table, th, td {
 .student{
   display: none;
 }
+
+
+.middle{
+text-align: center;
+left: 70px;
+height: 500px;
+width: 1400px;
+border-radius: 100px;
+position: absolute;
+
+}
+
 </style>
 
 <form method="GET", action="http://localhost:8000/">    
@@ -176,6 +188,21 @@ return false;">Project tracking</a>
 
  
   
+ 
+<video id="myVideo" class="middle" width="500" height="500"    autoplay>
+  <source src="http://localhost:5000/amrita.mp4" type="video/mp4">
+ 
+</video>
+ 
+  <p id="demo"></p>
+
+
+<script>
+function myFunction() {
+var x = document.getElementById("myVideo").autoplay;
+document.getElementById("demo").innerHTML = x;
+}
+</script>
 
 
     
@@ -270,14 +297,20 @@ return false;">Project tracking</a>
     }
      
 
-    function Profile() {
-  var x = document.getElementById("Profile");
-  if (x.style.display === "none") {
-  x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+
+function Profile() {
+var x = document.getElementById("Profile");
+var y = document.getElementById("myVideo");
+if (x.style.display === "none") {
+x.style.display = "block";
+y.style.display="none";
+} else {
+x.style.display = "none";
+y.style.display="block";
 }
+}
+ 
+
  
 
  

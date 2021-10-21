@@ -191,7 +191,9 @@ res.sendfile("usuccess.html");
 
 var issue = query.issue;
 var section=query.section;
- 
+var subcode=query.subcode;
+var grade=query.grade;
+var mark=query.mark;
 
 
 app.get('/classissues', function(req, res){
@@ -199,13 +201,21 @@ res.sendfile("./classissues.html");
         
 });
         
-if(issue!=null && section!=null){ console.log("dssssssss" + issue + section);
+if(issue!=null && section!=null){  
 mycon.query(` INSERT INTO database1.classissues (section, issue) VALUES ('${section}', '${issue}');`, function(err, result) {
 if(err){ throw err; }
 res.sendfile("./usuccess.html");
 })
 }
 
+//Grading Marks Edited by Coordinator
+if(subcode!=null && grade!=null && mark!=null){  
+mycon.query(` UPDATE database1.gradingscheme SET ${grade} = '${mark}' WHERE (coursecode = '${subcode}');`, function(err, result) {
+
+if(err){ throw err;}
+res.sendfile("./usuccess.html");
+})
+}
 
 
 })
@@ -529,7 +539,7 @@ console.log("upload js file started  " + process);
 fs.readFile('logintype.txt', 'utf-8', (err, data1) => {
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
 if (err) throw err; 
-mycon.query( `SELECT * FROM marks , profile where  ( profile.rollno = '${data}') ` , function(err, result) {
+mycon.query( `SELECT * FROM  profile where  ( profile.rollno = '${data}') ` , function(err, result) {
         
 if(err){
 throw err;
@@ -545,7 +555,18 @@ res.render('upload', obj);
 })
 
 
- 
+app.get('/gradeedit', function(req, res){
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {       
+
+if(data1=="coordlogin"){
+res.sendfile("./gradeedit.html");
+}else{
+res.sendfile("./restrict.html");
+}
+
+
+})
+});
  
  
 
