@@ -72,7 +72,7 @@ Tracking of Paper Publication
 
  
     <table style="width: 1000px;" ><center> 
-        <% tracking.forEach(function (students) { %>
+   
 
             <tr>
                 
@@ -87,7 +87,7 @@ Tracking of Paper Publication
                 <td>Supporting Documents</td>
                 <td>Contact</td>
             </tr>
-            
+            <% tracking.forEach(function (students) { %>
             <tr>  
                 <td><%=  students.projectid%>     </td> 
                 <td> <%= students.title%>      </td>

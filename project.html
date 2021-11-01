@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Document</title>
+</head>
+<style>
+body {
+   
+  background-image:url(" https://w.wallhaven.cc/full/39/wallhaven-39mxkv.png");
+         background-size: 1560px;
+         text-align: center;   
+}
+
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+ 
+ 
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.home {
+position:absolute;
+top: 10px;
+right: 100px;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+
+
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button {
+position:absolute;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+
+
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+ 
+ h1{
+   font-style: italic;
+   border-bottom: 10px;
+ }
+
+
+ .geturl {
+position:absolute;
+bottom: 10px;
+right: 670px;
+ 
+  border-radius: 2px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 13px;
+  padding: 7px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+</style>
+<form method="GET", action="http://localhost:8000/">  
+  
+<body>
+ 
+ 
+<form class="w3-container">
+    <div class="w3-container w3-peach">
+        <h2>Projects portal </h2>
+      </div><br><br>
+                  
+      Project id <input type="text" name="pid" required>  <br><br>
+      Tiltle <input type="text" name="title">  <br><br>
+      Team <input type="text" name="team">  <br><br>
+      Dataset <input type="text" name="dataset">  <br><br>
+      Section    <input type="text" name="section">  <br><br>
+      Guide<input type="text" name="guide">  <br><br>
+      
+
+      Approved <input type="text" name="approved">  <br><br>
+      Status<input type="text" name="status">  <br><br>
+     Documents <input type="text" name="documents">  <br><br>
+      Contact <input type="text" name="contact">  <br><br>
+   
+<button class="button" formaction="/"> Cancel</button>
+   &emsp;  &emsp;  &emsp;   &emsp;  &emsp;
+<button class="button" type="submit">confirm</button><br> <br>
+ 
+
+ 
+</form>     
+ 
+</body>
+</html>

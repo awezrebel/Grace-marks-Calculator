@@ -195,6 +195,19 @@ var section=query.section;
 var subcode=query.subcode;
 var grade=query.grade;
 var mark=query.mark;
+var rollno=query.rollno;
+var event = query.event;
+var status1=query.status;
+var remark=query.remark;
+var logintype=query.logintype;
+var pid=query.pid;
+var title=query.title;
+var team=query.team;
+var dataset=query.dataset;
+var guide=query.guide;
+var approved=query.approved;
+var documents=query.documents;
+var contact = query.contact;
 
 
 app.get('/classissues', function(req, res){
@@ -209,16 +222,68 @@ res.sendfile("./usuccess.html");
 })
 }
 
+//block users
+if(remark!=null && rollno!=null && logintype!=null && status1!=null){  
+mycon.query(`  UPDATE database1.${logintype} SET status = '${status1}', remark = '${remark}' WHERE (uname = '${rollno}');`, function(err, result) {   
+if(err){ throw err ; }
+res.sendfile("./usuccess.html");
+})
+
+}
+
+
 //Grading Marks Edited by Coordinator
 if(subcode!=null && grade!=null && mark!=null){  
 mycon.query(` UPDATE database1.gradingscheme SET ${grade} = '${mark}' WHERE (coursecode = '${subcode}');`, function(err, result) {
+if(err){ throw err;}
+res.sendfile("./usuccess.html");
+})
+}
 
+//Approval   by Coordinator
+if(rollno!=null && event!=null && status!=null){  
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => {
+mycon.query(` INSERT INTO database1.approval (roll, Event, status , doneby) VALUES ('${rollno}', '${event}', '${status}' , '${data}');  `, function(err, result) {
+  
+
+if(err){ throw err;}
+res.sendfile("./usuccess.html");
+})
+})
+}
+
+//project update 
+if(pid!=null && title!=null && team!=null){  
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => {
+mycon.query(` INSERT INTO database1.tracking (projectid, title, team, Dataset, section, guide, Approved, status, documents, contact) VALUES ('${pid}', '${title}', '${team}' , '${dataset}', '${section}', '${guide}', '${approved}', '${status}', '${documents}', '${contact}');  `, function(err, result) {
+if(err){ throw err;}
+res.sendfile("./usuccess.html");
+})
+})
+}
+ 
+
+
+
+//Event Marks Edited by Coordinator
+if(event!=null && mark!=null){  
+mycon.query(` UPDATE database1.gracemark SET Allocatedmarks = '${mark}' WHERE (event = '${event}');`, function(err, result) {
+         
+    
 if(err){ throw err;}
 res.sendfile("./usuccess.html");
 })
 }
 
 
+
+//Marks Edited by Faculty
+if(subcode!=null && rollno!=null && mark!=null){  
+mycon.query(` UPDATE database1.marks SET ${subcode} = '${mark}' WHERE (rollno = '${rollno}');`, function(err, result) {
+if(err){ throw err;}
+res.sendfile("./usuccess.html");
+})
+}
 
 
 
@@ -244,6 +309,8 @@ var ad_pass=query.admin_password;
 if(ad_uname != undefined && ad_pass != undefined){
 if(ad_uname=="admin" && ad_pass =="1234"){
 res.sendfile("welcome_admin.html");
+}else{
+res.sendfile("./oops.html");
 }
 }
 
@@ -251,7 +318,9 @@ app.get('/welcome_admin', function(req, res){
 res.sendfile("./welcome_admin.html");
 });
 
-
+app.get('/proj_upload', function(req, res){
+res.sendfile("./project.html");
+});
 
 app.get('/currentlogin',function(req,res){
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
@@ -287,7 +356,7 @@ res.render('loginhistory', obj1);
 
 var username = query.username;
 var password=query.password;
- 
+var status=null;
  
 if(username != undefined && password != undefined) {
 fs.truncate('currentlogin.txt', 0, function() {
@@ -323,7 +392,7 @@ res.sendfile("oops.html");
             
 if(login[m].pwd==password){
 test=1
-    
+status = login[m].status;
 fs.appendFile('currentlogin.txt', username , (err) => { 
 if (err) throw err;
 const sql5=`INSERT INTO database1.currentlogin (user) VALUES ('${username}')`;
@@ -338,8 +407,11 @@ console.log(username);
 console.log(password);
 console.log(test);
 if(test==1){ 
- 
+if(status!="blocked"){
 res.redirect("/loginwelcome");
+}else{
+res.sendfile("./blocked.html");
+} 
  
  
  
@@ -522,6 +594,19 @@ res.render('class_issues', obj2);
 }});         
 }); 
 
+app.get('/gracemarks', function(req, res) {      
+var obj2={}  
+mycon.query(` SELECT * FROM database1.gracemark; `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj2 = {gracemarks: result};
+res.render('gracemarks', obj2);   
+}});         
+}); 
+        
+
+
 app.get('/tracking', function(req, res) {      
 var obj2={}  
 mycon.query(` SELECT * FROM database1.tracking; `, function(err, result) {
@@ -591,6 +676,19 @@ res.render('grading', obj);
  
 })
 
+
+app.get('/approval' , function(req,res){
+mycon.query( `SELECT * FROM database1.approval; ` , function(err, result) {
+if(err){
+throw err;
+} else {
+obj = {approval : result};                    
+res.render('approval', obj);           
+}
+});         
+})
+
+
 app.get('/uploading' , function(req,res){
 var spawn = require("child_process").spawn; 
 var process = spawn('node',["./upload.js",] ); 
@@ -630,13 +728,66 @@ res.sendfile("./restrict.html");
 })
 });
  
- 
+
+//Marks Editing
+app.get('/marksedit', function(req, res){
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {       
+        
+if(data1=="facultylogin"){
+res.sendfile("./markedit.html");
+}else{
+res.sendfile("./restrict.html");
+}
+        
+        
+})
 });
+         
+ 
+ //Approval Editing
+  
+app.get('/approvaledit', function(req, res){
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {       
+if(data1=="coordlogin"){
+res.sendfile("./approval.html");
+}else{
+res.sendfile("./restrict.html");
+}                
+})
+});
+                 
+         
+
+
+app.get('/eventchange', function(req, res){
+fs.readFile('logintype.txt', 'utf-8', (err, data1) => {                       
+if(data1=="coordlogin"){
+res.sendfile("./graceedit.html");
+}else{
+res.sendfile("./restrict.html");
+}
+                
+})
+});
+});
+
+ 
 
 app.get('/warning', function(req, res){
 res.sendfile("./warning.html");
 });
 
+app.get('/block', function(req, res){
+res.sendfile("./blockuser.html");
+});
+app.get('/error', function(req, res){
+res.sendfile("./error.html");
+});
+        
+
+app.get('/success', function(req, res){
+res.sendfile("./usuccess.html");
+});
 app.get('/logout', function(req, res){
 res.sendfile("logout.html");
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
@@ -652,19 +803,6 @@ console.log("File Content Deleted");
 });
 
 })
-
-
-
-     
-     
-
-
-
-
-
-
-
-
-
+ 
 app.listen(8000);
 console.log("Listening to port 8000");

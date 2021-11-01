@@ -11,7 +11,7 @@ git push -u origin main
 
 to modify :
 git add *
-git commit -m "bugs fixed"
+git commit -m "Features Added"
 git pull  origin main
 git push -u origin main 
 awezrebel

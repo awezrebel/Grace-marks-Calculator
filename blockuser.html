@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost:5000/css/button.css" />
+
+<title>Document</title>
+ 
+  <form method="GET", action="http://localhost:8000/">
+
+  </head>
+  <style>
+  
+    
+    body {
+        
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+       text-align: center;
+        height: 100vh;
+   
+        }
+
+
+        .button {
+position:absolute;
+ 
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+
+
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.logout {
+position:absolute;
+top: 10px;
+right: 20px;
+font-size:15px;
+  border-radius: 3px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+ 
+  padding: 7px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+  </style>
+  <h1> 
+<center>
+<p1>Block / Unblock User</p1><br><br>
+</center>
+        
+</h1> 
+
+<form method="GET", action="http://localhost:8000/"> 
+
+  
+<body>
+  <center>
+    <class="text" style="color: black; font-weight: bold;">
+       
+        <img src ="http://localhost:5000/img/student.png"  width="100px">
+        <img src ="http://localhost:5000/img/Faculty.png"  width="115px">
+        <img src ="http://localhost:5000/img/co.png"  width="130px">
+        <img src ="http://localhost:5000/img/Admin.png"  width="200px">
+        <br>
+        <br>  <br>
+      Roll no : <input  type="text",  name="rollno" required><br></br>
+      Remark : <input  type="text",  name="remark" required><br></br>
+
+     
+    User :   <input type="radio" id="fac" name="logintype" value="facultylogin">
+      <label for="fac">Faculty </label>
+      <input type="radio" id="stu" name="logintype" value="studentlogin">
+      <label for="stu">Student</label>
+      <input type="radio" id="co" name="logintype" value="coordlogin">
+      <label for="co">Co ordinator</label>
+      <br><br>
+      
+<br>
+Action : <input type="radio" id="Block" name="status" value="blocked">
+<label for="Block">Block</label>
+<input type="radio" id="Unblock" name="status" value="unblocked">
+<label for="Unblock">Unblock</label><br><br>
+     
+   </class>
+   <button class="button" type="submit">Submit</button> 
+  
+
+  </center> 
+ 
+  <button  class="logout" formaction="/warning" >Logout</button>
+
+ 
+</body>
+</html>
