@@ -241,9 +241,9 @@ res.sendfile("./usuccess.html");
 }
 
 //Approval   by Coordinator
-if(rollno!=null && event!=null && status!=null){  
+if(rollno!=null && event!=null && status1!=null){  
 fs.readFile('currentlogin.txt', 'utf-8', (err, data) => {
-mycon.query(` INSERT INTO database1.approval (roll, Event, status , doneby) VALUES ('${rollno}', '${event}', '${status}' , '${data}');  `, function(err, result) {
+mycon.query(` INSERT INTO database1.approval (roll, Event, status , doneby) VALUES ('${rollno}', '${event}', '${status1}' , '${data}');  `, function(err, result) {
   
 
 if(err){ throw err;}
@@ -770,6 +770,8 @@ res.sendfile("./restrict.html");
 })
 });
 });
+
+
 
  
 

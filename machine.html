@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="http://localhost:5000/css/contact.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<style>
+.home {
+position: absolute;
+top: 0.8rem;
+right: 10rem;
+}
+
+
+.home button {
+background: #ed710c;
+background-image: -webkit-linear-gradient(top, #ed710c, #e87c2a);
+
+background-image: linear-gradient(to bottom, #ed710c, #e87c2a);
+
+border-radius: 4px;
+text-align: center;
+
+color: #ffffff;
+font-size: 18px;
+padding: 0.5rem;
+padding-right: 1rem;
+padding-left: 1rem;
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: all 0.5s ease-in-out;
+}
+
+.home button:hover {
+background: #3cb0fd;
+text-decoration: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
+
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #29539b;
+  background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
+  font-family: "Open Sans", sans-serif;
+}
+.header {
+  /* border: 2px solid red; */
+  height: 30vh;
+  position: relative;
+}
+.header h1 {
+  font-family: "Satisfy", cursive;
+  color: white;
+  margin: 2rem;
+  transition: all 0.8s ease-in-out;
+
+  font-size: 4rem;
+}
+
+.about-us {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.4rem;
+}
+
+.home {
+position: absolute;
+top: 0.8rem;
+right: 10rem;
+}
+
+.about-us button {
+background: #ed710c;
+background-image: -webkit-linear-gradient(top, #ed710c, #e87c2a);
+
+background-image: linear-gradient(to bottom, #ed710c, #e87c2a);
+
+border-radius: 4px;
+text-align: center;
+color: #ffffff;
+font-size: 18px;
+padding: 0.5rem;
+padding-right: 1rem;
+padding-left: 1rem;
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: all 0.5s ease-in-out;
+}
+
+.about-us button:hover {
+background: #3cb0fd;
+text-decoration: none;
+}
+
+
+
+.img-container {
+  position: absolute;
+  height: 70vh;
+  display: grid;
+  left: 6rem;
+  place-items: center;
+  overflow: hidden;
+  opacity: 1;
+}
+.image {
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.image img {
+  height: 100%;
+  background-size: cover;
+  padding-right: 11rem;
+}
+
+.creator-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease-in-out;
+  top: 0;
+  left: -50rem;
+  height: 60vh;
+  width: 40%;
+  /* border: 2px solid red; */
+  margin-top: 3.3rem;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.click-btns {
+  width: 80%;
+  height: 18%;
+  /* border: 2px solid green; */
+  display: grid;
+  place-items: center;
+}
+
+.click-btns a{
+    width:90%;
+    height: 80%;
+    margin-top: 1rem;
+}
+
+.click-btns a button {
+  width: 100%;
+  height: 70%;
+  font-size: 1.2rem;
+  border: none;
+  background-color: white;
+  color: #29539b;
+  transition: all 0.5s ease-in-out;
+}
+.click-btns button:hover {
+  color: white;
+  background-color: rgb(240, 158, 26);
+  font-size: 1rem;
+}
+.creator-container {
+  position: absolute;
+  top: 2rem;
+  right: -60rem;
+  /* left:30rem; */
+  margin-top: 1.1rem;
+  transition: all 1s ease-in-out;
+
+
+  flex-direction: column;
+  display: flex;
+  border: 1px solid red;
+  width: 30rem;
+  height: 58vh;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  border-radius: 31px;
+  /* background: #ffffff; */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.item {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item img {
+  height: 50%;
+  margin-top: 2rem;
+}
+
+span {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+
+  width: 100%;
+  text-align: center;
+  font-family: "Satisfy", cursive;
+}
+
+.details{
+    text-align: center;
+}
+
+h1:hover{
+    color:orange;
+}
+
+
+.bird img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:30px;
+
+}
+
+</style>
+
+<body>
+    <div class="header">
+        <div class="messsage">
+            <h1>Meet the creators!</h1>
+        </div>
+        <div class="about-us">
+            <button>About Us</button>  
+            
+        </div>
+      
+    </div>
+
+    <div class="img-container">
+        <div class="image">
+            <img src="http://localhost:5000/img/Teammates.png" />
+        </div>
+
+        <div class="creator-btns">
+            <div class="click-btns">
+                <a href="#item1">
+                
+                    <button>Shaik Awez</button>
+                </a>
+            </div>
+            <div class="click-btns">
+                <a href="#item2">
+                
+                    <button>Pavan Kruthik.N</button>
+                </a>
+
+            </div>
+            <div class="click-btns">
+                <a href="#item3">
+                
+                    <button>Upendra.P</button>
+                </a>
+
+            </div>
+            <div class="click-btns">
+                <a href="#item4">
+                
+                    <button>Pruthve Rej</button>
+                </a>
+
+            </div>
+           
+        </div>
+       
+
+        <div class="creator-container">
+            <div class="item" id="item1">
+                <img src="http://localhost:5000/img/awez.png" alt="">
+                <span>Back end Developer</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>6303731463</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>shaikawez@gmail.com</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="item" id="item2">
+                <img src="http://localhost:5000/img/pavan.png" alt="">
+                <span>Machine Learning</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>8341900899</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>kruthik24@gmail.com</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="item" id="item3">
+                <img src="http://localhost:5000/img/upendra.png" alt="">
+                <span>Machine Learning</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>9182410276</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>p_upendra@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item" id="item4">
+                <img src="http://localhost:5000/img/pruthve.png" alt="">
+                <span>Machine Learning</span>
+                <div class="details">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>9381044045</span>
+                    <div class="mail">
+
+                        <i class="fas fa-envelope"></i>
+                        <span>p_pruthve@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+
+    <script src="./contact.js"></script>
+</body>
+
+</html>
