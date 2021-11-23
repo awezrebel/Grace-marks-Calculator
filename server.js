@@ -554,6 +554,27 @@ mycon.query(`  SELECT * FROM database1.profile where type="student"; `, function
 });
 }); 
 
+
+
+
+//Project tracking dashboard
+
+app.get('/trackingdashboard', function(req, res) { 
+fs.readFile('currentlogin.txt', 'utf-8', (err, data) => { 
+if (err) throw err;         
+mycon.query(`  SELECT * FROM database1.tracking , profile where (profile.username = tracking.guide) `, function(err, result) {
+if(err){
+throw err;
+} else {
+obj1 = {trackingdashboard: result};
+res.render('trackingdashboard', obj1);   
+// console.log(obj1);      
+}
+});
+});
+}); 
+        
+
 //Retriving Faculty Details
 
  

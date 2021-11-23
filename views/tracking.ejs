@@ -86,6 +86,7 @@ Tracking of Paper Publication
                 <td>Status</td>
                 <td>Supporting Documents</td>
                 <td>Contact</td>
+                <td>More Details</td>
             </tr>
             <% tracking.forEach(function (students) { %>
             <tr>  
@@ -100,6 +101,7 @@ Tracking of Paper Publication
                  
                <td> <a href="<%= students.documents%>" >Click here</a></td>
                 <td> <%= students.contact%>      </td>
+                <td>  <button style="background-color: palevioletred;" formaction="/trackingdashboard">Click Here</button></td>
      
         <% }) %>
        </tr>   </center>
